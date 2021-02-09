@@ -1,0 +1,10 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.vimrc: vim/.vimrc
+    ~/.vim_runtime: vim/.vim_runtime

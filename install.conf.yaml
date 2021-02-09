@@ -8,3 +8,5 @@
 - link:
     ~/.vimrc: vim/.vimrc
     ~/.vim_runtime: vim/.vim_runtime
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.tmux: tmux/.tmux

@@ -15,6 +15,7 @@ set cursorline
 let g:ale_linters = {
             \   'python': ['pylint'],
             \}
+let g:ale_cpp_cc_options = '-std=c++11 -Wall'
 
 " coc.nvim官方推荐配置|TheCW指导
 " 语言支持

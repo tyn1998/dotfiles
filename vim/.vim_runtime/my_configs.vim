@@ -12,7 +12,8 @@ let g:lightline = {
 " 当前行下划线
 set cursorline
 
-let g:" coc.nvim官方推荐配置|TheCW指导
+
+" coc.nvim官方推荐配置|TheCW指导
 " 语言支持
 let g:coc_global_extensions = ['coc-ccls', 'coc-vimlsp', 'coc-python', 'coc-eslint']
 

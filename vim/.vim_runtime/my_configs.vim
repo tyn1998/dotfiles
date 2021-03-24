@@ -1,3 +1,5 @@
+" when files have changed outside, refresh.
+set autoread
 " hybrid number
 set relativenumber
 set nu rnu

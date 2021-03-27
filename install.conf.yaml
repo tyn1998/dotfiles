@@ -10,3 +10,6 @@
     ~/.vim_runtime: vim/.vim_runtime
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.tmux: tmux/.tmux
+    ~/.config/fish:
+      force: true
+      path: fish

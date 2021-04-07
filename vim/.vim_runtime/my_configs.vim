@@ -27,9 +27,6 @@ set hidden
 set nobackup
 set nowritebackup
 
-" Give more space for displaying messages.
-set cmdheight=2
-
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -60,7 +57,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+" Use <c-o> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-o> coc#refresh()
 else
@@ -83,8 +80,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use <leader>h to show documentation in preview window.
+nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

@@ -7,7 +7,7 @@
 
 - link:
     ~/.vimrc: vim/.vimrc
-    ~/.vim_runtime: vim/.vim_runtime
+    ~/.vim: vim/.vim
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.tmux: tmux/.tmux
     ~/.config/fish:

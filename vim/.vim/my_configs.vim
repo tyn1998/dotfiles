@@ -15,6 +15,9 @@ set cursorline
 " 使用J和K切换tab
 nnoremap J :tabprevious<CR>
 nnoremap K :tabnext<CR>
+" Go to last active tab 
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <silent> ^ :exe "tabn ".g:lasttab<cr>
 
 " coc.nvim官方推荐配置|TheCW指导
 " 语言支持

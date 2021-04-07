@@ -12,6 +12,9 @@ let g:lightline = {
 " 当前行下划线
 set cursorline
 
+" 使用J和K切换tab
+nnoremap J :tabprevious<CR>
+nnoremap K :tabnext<CR>
 
 " coc.nvim官方推荐配置|TheCW指导
 " 语言支持
@@ -81,7 +84,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

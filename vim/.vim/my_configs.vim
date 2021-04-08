@@ -15,9 +15,12 @@ set cursorline
 " 使用J和K切换tab
 nnoremap J :tabprevious<CR>
 nnoremap K :tabnext<CR>
-" Go to last active tab 
+" 在两个tab间切换
 au TabLeave * let g:lasttab = tabpagenr()
 nnoremap <silent> <c-^> :exe "tabn ".g:lasttab<cr>
+" 用<<和>>来移动tab
+nnoremap << :-tabmove<CR>
+nnoremap >> :+tabmove<CR>
 
 " 有道翻译
 vnoremap <silent> <C-T> :<C-u>Ydv<CR>

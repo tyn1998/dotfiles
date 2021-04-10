@@ -1,0 +1,6 @@
+{
+    "snippets": {
+        "userSnippetsDirectory": "~/.vim/myUltiSnips",
+        "snipmate.enable": false
+    }
+}

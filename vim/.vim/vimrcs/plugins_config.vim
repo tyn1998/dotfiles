@@ -152,7 +152,7 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " => Coc.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 语言支持
-let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-pyright', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-pyright', 'coc-tsserver', 'coc-snippets']
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -177,19 +177,19 @@ else
   set signcolumn=yes
 endif
 
-" " Use tab for trigger completion with characters ahead and navigate.
-" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" " other plugin before putting this into your config.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use <c-o> to trigger completion.
 if has('nvim')

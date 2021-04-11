@@ -13,3 +13,6 @@
     ~/.config/fish:
       force: true
       path: fish
+    ~/.config/ranger:
+      force: true
+      path: ranger

@@ -2,13 +2,6 @@
 set relativenumber
 set nu rnu
 
-" 覆盖amix默认的color scheme
-colorscheme molokai
-" 覆盖amix默认lightline设置的主题，反斜杠必须有
-let g:lightline = {
-      \ 'colorscheme': 'molokai'
-      \ }
-
 " 当前行下划线
 set cursorline
 
@@ -34,3 +27,4 @@ noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f6> :AsyncTask project-run<cr>
 noremap <silent><f7> :AsyncTask project-build<cr>
 noremap <silent><f9> :AsyncTask file-build<cr>
+

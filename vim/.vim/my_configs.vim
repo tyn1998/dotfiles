@@ -27,6 +27,3 @@ noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f6> :AsyncTask project-run<cr>
 noremap <silent><f7> :AsyncTask project-build<cr>
 noremap <silent><f9> :AsyncTask file-build<cr>
-
-" 让vim-airline显示箭头形状
-let g:airline_powerline_fonts = 1

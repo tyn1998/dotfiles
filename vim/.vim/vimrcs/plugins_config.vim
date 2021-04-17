@@ -137,7 +137,7 @@ let g:airline#extensions#tabline#fnamemod = ':t' " 不显示文件路径
 " => Coc.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 语言支持
-let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-pyright', 'coc-tsserver', 'coc-snippets']
+let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-pyright', 'coc-tsserver', 'coc-snippets', 'coc-json']
 
 " TextEdit might fail if hidden is not set.
 set hidden

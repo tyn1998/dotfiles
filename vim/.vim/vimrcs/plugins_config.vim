@@ -96,6 +96,18 @@ let g:multi_cursor_quit_key            = '<Esc>'
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-expand-region
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 使用回车扩大区域（默认为+）
+nmap <CR> <Plug>(expand_region_expand)
+vmap <CR> <Plug>(expand_region_expand)
+" 使用退格减小区域（默认为_）
+vmap <BS> <Plug>(expand_region_shrink)
+nmap <BS> <Plug>(expand_region_shrink)
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimroom
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

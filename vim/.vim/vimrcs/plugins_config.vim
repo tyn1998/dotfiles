@@ -80,9 +80,9 @@ let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
 let g:multi_cursor_start_word_key      = '<C-s>'
-let g:multi_cursor_select_all_word_key = '<A-s>'
+let g:multi_cursor_select_all_word_key = '<C-a>'
 let g:multi_cursor_start_key           = 'g<C-s>'
-let g:multi_cursor_select_all_key      = 'g<A-s>'
+let g:multi_cursor_select_all_key      = 'g<C-a>'
 let g:multi_cursor_next_key            = '<C-s>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
@@ -272,8 +272,9 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" 和vim-expand-region功能相似，但还是启用吧
+nmap <silent> <C-r> <Plug>(coc-range-select)
+xmap <silent> <C-r> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')

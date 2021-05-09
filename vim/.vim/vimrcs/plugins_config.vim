@@ -273,8 +273,8 @@ endif
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
 " 和vim-expand-region功能相似，但还是启用吧
-nmap <silent> <C-r> <Plug>(coc-range-select)
-xmap <silent> <C-r> <Plug>(coc-range-select)
+" nmap <silent> <C- > <Plug>(coc-range-select)
+" xmap <silent> <C- > <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')

@@ -37,6 +37,15 @@ set history=500
 filetype plugin on
 filetype indent on
 
+" 开启颜色支持
+if exists('$TMUX') 
+    if has('nvim')
+        set termguicolors
+    else
+        set term=screen-256color 
+    endif
+endif
+
 " Set to auto read when a file is changed from the outside
 set autoread
 au FocusGained,BufEnter * checktime

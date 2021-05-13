@@ -173,6 +173,27 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fzf.cim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" [Buffers] 如果可能跳到已存在窗口
+let g:fzf_buffers_jump = 1
+
+nnoremap <leader><leader> :Commands<CR>
+nnoremap <C-f> :call FzfOmniFiles()<CR>
+nnoremap <C-g> :Ag<CR>
+nnoremap <C-b> :Buffers<CR>
+
+fun! FzfOmniFiles()
+  let is_git = system('git status')
+  if v:shell_error
+    :Files
+  else
+    :GFiles
+  endif
+endfun
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 语言支持
@@ -258,8 +279,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -292,18 +313,18 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  " nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  " nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  " vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  " vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-" nmap <silent> <C- > <Plug>(coc-range-select)
-" xmap <silent> <C- > <Plug>(coc-range-select)
+nmap <silent> + <Plug>(coc-range-select)
+xmap <silent> + <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')

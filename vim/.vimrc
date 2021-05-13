@@ -1,10 +1,9 @@
 set runtimepath+=~/.vim
 
 source ~/.vim/vimrcs/basic.vim
-source ~/.vim/vimrcs/plugins_config.vim
-source ~/.vim/vimrcs/extended.vim
+source ~/.vim/vimrcs/plugins.vim
 
 try
-source ~/.vim/my_configs.vim
+source ~/.vim/vimrcs/extra.vim
 catch
 endtry

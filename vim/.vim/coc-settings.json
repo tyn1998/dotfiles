@@ -1,6 +1,9 @@
 {
     "snippets": {
-        "userSnippetsDirectory": "~/.vim/myUltiSnips",
+        "ultisnips": {
+            "directories": ["~/.vim/snippets/snippets_loaded"]
+        },
+        "userSnippetsDirectory": "~/.vim/snippets/snippets_custom",
         "snipmate.enable": false
     }
 }

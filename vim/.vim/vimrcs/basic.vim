@@ -2,8 +2,9 @@
 " => Load pathogen paths
 """"""""""""""""""""""""""""""
 let s:vim_runtime = expand('<sfile>:p:h')."/.."
-call pathogen#infect(s:vim_runtime.'/amix_plugins/{}')
-call pathogen#infect(s:vim_runtime.'/my_plugins/{}')
+call pathogen#infect(s:vim_runtime.'/plugins/amix_plugins/{}')
+call pathogen#infect(s:vim_runtime.'/plugins/my_plugins/{}')
+call pathogen#infect(s:vim_runtime.'/colors/{}')
 call pathogen#helptags()
 
 
@@ -12,13 +13,6 @@ call pathogen#helptags()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
-
-" hybrid number
-set relativenumber
-set nu rnu
-
-" 当前行下划线
-set cursorline
 
 " Enable filetype plugins
 filetype plugin on
@@ -71,6 +65,13 @@ if has("win16") || has("win32")
 else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
+
+" hybrid number
+set relativenumber
+set nu rnu
+
+" 当前行下划线
+set cursorline
 
 "Always show current position
 set ruler
@@ -136,7 +137,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme desert
+    colorscheme gruvbox
 catch
 endtry
 
@@ -307,10 +308,6 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-
-" Colorscheme
-set background=dark
-colorscheme gruvbox
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

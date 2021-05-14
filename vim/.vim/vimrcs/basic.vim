@@ -120,6 +120,7 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
+set signcolumn=yes
 
 " Add a bit extra margin to the left
 set foldcolumn=1

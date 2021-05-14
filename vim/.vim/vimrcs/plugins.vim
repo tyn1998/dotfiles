@@ -177,7 +177,8 @@ let g:fzf_buffers_jump = 1
 nnoremap <leader><leader> :Commands<CR>
 nnoremap <C-f> :call FzfOmniFiles()<CR>
 nnoremap <C-g> :Ag<CR>
-nnoremap <C-b> :Buffers<CR> # 在tmux中触发<C-b>需要按<C-b>b
+" 在tmux中触发<C-b>需要按<C-b>b
+nnoremap <C-b> :Buffers<CR> 
 
 fun! FzfOmniFiles()
   let is_git = system('git status')
@@ -193,7 +194,10 @@ endfun
 " => Coc.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 语言支持
-let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp', 'coc-pyright', 'coc-tsserver', 'coc-snippets', 'coc-json', 'coc-yank']
+let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp',
+            \'coc-pyright', 'coc-tsserver', 'coc-snippets',
+            \'coc-json', 'coc-yank', 'coc-html', 'coc-css',
+            \'coc-prettier']
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

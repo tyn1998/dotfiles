@@ -186,7 +186,7 @@ let g:fzf_buffers_jump = 1
 nnoremap <leader><leader> :Commands<CR>
 nnoremap <C-f> :call FzfOmniFiles()<CR>
 nnoremap <C-g> :Ag<CR>
-nnoremap <C-b> :Buffers<CR>
+nnoremap <C-b> :Buffers<CR> # 在tmux中触发<C-b>需要按<C-b>b
 
 fun! FzfOmniFiles()
   let is_git = system('git status')
@@ -347,7 +347,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList --normal diagnostics<cr>
+nnoremap <silent><nowait> <space>d  :<C-u>CocList --normal diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList --normal extensions<cr>
 " Show commands.
@@ -361,4 +361,4 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>l  :<C-u>CocListResume<CR>

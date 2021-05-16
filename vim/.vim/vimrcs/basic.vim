@@ -111,10 +111,7 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-set signcolumn=yes
-
-" Add a bit extra margin to the left
-set foldcolumn=1
+set signcolumn=auto
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,13 +120,6 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable
 
-try
-    colorscheme gruvbox
-catch
-endtry
-
-set background=dark
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -137,6 +127,12 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
+
+set background=dark
+try
+    colorscheme gruvbox
+catch
+endtry
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -295,13 +291,6 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>e :e! ~/.vim/my_configs.vim<cr>
-autocmd! bufwritepost ~/.vim/my_configs.vim source ~/.vim/my_configs.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

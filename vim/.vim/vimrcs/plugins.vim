@@ -320,7 +320,7 @@ nnoremap <silent><nowait> <space>d  :<C-u>CocList --normal diagnostics<cr>
 nnoremap <silent><nowait> <space>e  :<C-u>CocList --normal extensions<cr>
 nnoremap <silent><nowait> <space>c  :<C-u>CocList --normal commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList --normal outline<cr>
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <space>s  :<C-u>CocList --normal snippets<cr>
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>

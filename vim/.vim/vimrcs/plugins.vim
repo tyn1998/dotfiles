@@ -59,17 +59,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-expand-region
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 使用回车扩大区域（默认为+）
-nmap <CR> <Plug>(expand_region_expand)
-vmap <CR> <Plug>(expand_region_expand)
-" 使用退格减小区域（默认为_）
-vmap <BS> <Plug>(expand_region_shrink)
-nmap <BS> <Plug>(expand_region_shrink)
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-easy-align
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -307,8 +296,10 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> + <Plug>(coc-range-select)
-xmap <silent> + <Plug>(coc-range-select)
+nmap <silent> <CR> <Plug>(coc-range-select)
+xmap <silent> <CR> <Plug>(coc-range-select)
+nmap <silent> <BS> <Plug>(coc-range-select-backward)
+xmap <silent> <BS> <Plug>(coc-range-select-backward)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -325,22 +316,15 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
-" Show all diagnostics.
 nnoremap <silent><nowait> <space>d  :<C-u>CocList --normal diagnostics<cr>
-" Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList --normal extensions<cr>
-" Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList --normal commands<cr>
-" Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList --normal outline<cr>
-" Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>l  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>m  :<C-u>CocList --normal marketplace<cr>
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>

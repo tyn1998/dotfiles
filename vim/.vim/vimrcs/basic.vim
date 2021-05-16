@@ -352,9 +352,6 @@ cnoremap <C-N> <Down>
 " 为了coc诊断浮窗有时会卡住而设
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
 
-" 设置较小的ttimeoutlen使得fcix.vim的响应时间快一点
-set ttimeoutlen=50
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

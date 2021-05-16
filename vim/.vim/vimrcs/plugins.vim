@@ -197,7 +197,7 @@ endfun
 let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp',
             \'coc-pyright', 'coc-tsserver', 'coc-snippets',
             \'coc-json', 'coc-yank', 'coc-html', 'coc-css',
-            \'coc-prettier']
+            \'coc-prettier', 'coc-marketplace', 'coc-ci']
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -344,3 +344,7 @@ nnoremap <silent><nowait> <space>l  :<C-u>CocListResume<CR>
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+" coc-ci
+nmap <silent> w <Plug>(coc-ci-w)
+nmap <silent> b <Plug>(coc-ci-b)

@@ -18,15 +18,6 @@ set history=500
 filetype plugin on
 filetype indent on
 
-" 开启颜色支持
-" if exists('$TMUX')
-"     if has('nvim')
-"         set termguicolors
-"     else
-"         set term=screen-256color
-"     endif
-" endif
-
 " Set to auto read when a file is changed from the outside
 set autoread
 au FocusGained,BufEnter * checktime
@@ -346,6 +337,9 @@ cnoremap <C-N> <Down>
 " 按两次Esc清除屏幕所有“覆盖物”
 " 为了coc诊断浮窗有时会卡住而设
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
+
+" <Esc>的速度瞬间拖拉机变跑车
+set ttimeoutlen=50
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

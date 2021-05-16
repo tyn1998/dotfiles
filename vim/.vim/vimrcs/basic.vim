@@ -19,13 +19,13 @@ filetype plugin on
 filetype indent on
 
 " 开启颜色支持
-if exists('$TMUX')
-    if has('nvim')
-        set termguicolors
-    else
-        set term=screen-256color
-    endif
-endif
+" if exists('$TMUX')
+"     if has('nvim')
+"         set termguicolors
+"     else
+"         set term=screen-256color
+"     endif
+" endif
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -131,11 +131,6 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
 
 try
     colorscheme gruvbox

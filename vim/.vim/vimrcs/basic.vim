@@ -123,6 +123,7 @@ if has("termguicolors")
     set termguicolors
 endif
 
+" let g:solarized_termcolors=256 
 set background=dark
 try
     colorscheme gruvbox

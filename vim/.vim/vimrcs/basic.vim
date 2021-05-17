@@ -106,11 +106,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
 set signcolumn=auto
 
 
@@ -120,14 +115,15 @@ set signcolumn=auto
 " Enable syntax highlighting
 syntax enable
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+if has("termguicolors")
+    " fix bug for vim
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    " enable true color
+    set termguicolors
 endif
 
+" let g:solarized_termcolors=256 
 set background=dark
 try
     colorscheme gruvbox

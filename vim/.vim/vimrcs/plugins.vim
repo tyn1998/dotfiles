@@ -96,8 +96,8 @@ let g:airline#extensions#tabline#fnamemod = ':t' " 不显示文件路径
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => 有道翻译
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap <silent> <C-T> :<C-u>Ydv<CR>
-nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+vnoremap <silent> <leader>t :<C-u>Ydv<CR>
+nnoremap <silent> <leader>t :<C-u>Ydc<CR>
 noremap <leader>yd :<C-u>Yde<CR>
 
 
@@ -145,8 +145,8 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+map <leader>N :cn<cr>
+map <leader>P :cp<cr>
 
 " Make sure that enter is never overriden in the quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
@@ -163,11 +163,18 @@ endif
 " [Buffers] 如果可能跳到已存在窗口
 let g:fzf_buffers_jump = 1
 
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R --exclude=.git 
+            \--exclude=node_modules 
+            \--exclude=package-lock.json 
+            \--exclude=package.json'
+
 nnoremap <leader><leader> :Commands<CR>
 nnoremap <C-f> :call FzfOmniFiles()<CR>
 nnoremap <C-g> :Ag<CR>
 " 在tmux中触发<C-b>需要按<C-b>b
 nnoremap <C-b> :Buffers<CR> 
+nnoremap <C-t> :Tags<CR>
 
 fun! FzfOmniFiles()
   let is_git = system('git status')

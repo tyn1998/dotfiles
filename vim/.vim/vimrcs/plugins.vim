@@ -4,8 +4,8 @@
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
+let g:bufExplorerSortBy='mru'
+map <leader><leader> :BufExplorer<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -169,7 +169,6 @@ let g:fzf_tags_command = 'ctags -R --exclude=.git
             \--exclude=package-lock.json 
             \--exclude=package.json'
 
-nnoremap <leader><leader> :Commands<CR>
 nnoremap <C-f> :call FzfOmniFiles()<CR>
 nnoremap <C-g> :Ag<CR>
 " 在tmux中触发<C-b>需要按<C-b>b

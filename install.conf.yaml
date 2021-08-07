@@ -10,6 +10,9 @@
     ~/.vim: vim/.vim
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.tmux: tmux/.tmux
+    ~/.bash_profile: bash/.bash_profile
+    ~/.bashrc: bash/.bashrc
+    ~/.fzf.bash: bash/.fzf.bash
     ~/.config/fish:
       force: true
       path: fish

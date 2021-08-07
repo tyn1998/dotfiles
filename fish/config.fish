@@ -8,5 +8,4 @@ set -x BAT_THEME gruvbox-dark
 set fish_greeting
 
 # pyenv init for fish
-status is-interactive; and pyenv init --path | source
 pyenv init - | source

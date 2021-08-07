@@ -1,4 +1,5 @@
 set runtimepath+=~/.vim
+set runtimepath+=~/.fzf
 
 source ~/.vim/vimrcs/basic.vim
 source ~/.vim/vimrcs/plugins.vim

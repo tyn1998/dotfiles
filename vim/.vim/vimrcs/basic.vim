@@ -123,7 +123,22 @@ if has("termguicolors")
     set termguicolors
 endif
 
-set background=dark
+set background=light
+
+" 根据background为light或dark切换bat的theme
+augroup update_bat_theme
+    autocmd!
+    autocmd colorscheme * call ToggleBatEnvVar()
+augroup end
+
+function ToggleBatEnvVar()
+    if (&background == "light")
+        let $FZF_PREVIEW_COMMAND="bat --style=numbers --theme=gruvbox-light --color=always {}"
+    else
+        let $FZF_PREVIEW_COMMAND="bat --style=numbers --theme=gruvbox-dark --color=always {}"
+    endif
+endfunction
+
 try
     colorscheme gruvbox
 catch

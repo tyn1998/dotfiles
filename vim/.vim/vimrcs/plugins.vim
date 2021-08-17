@@ -153,7 +153,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fzf.cim
+" => fzf.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add homebrew fzf to the vim path:
 if has("mac")

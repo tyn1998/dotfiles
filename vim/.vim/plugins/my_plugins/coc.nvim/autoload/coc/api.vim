@@ -2,9 +2,10 @@
 " Description: Client api used by vim8
 " Author: Qiming Zhao <chemzqm@gmail.com>
 " Licence: MIT licence
-" Last Modified:  Nov 11, 2020
+" Last Modified:  Aug 10, 2021
 " ============================================================================
 if has('nvim') | finish | endif
+scriptencoding utf-8
 let s:funcs = {}
 let s:prop_offset = get(g:, 'coc_text_prop_offset', 1000)
 let s:namespace_id = 1
@@ -14,6 +15,13 @@ let s:namespace_cache = {}
 function! s:buf_line_count(bufnr) abort
   if bufnr('%') == a:bufnr
     return line('$')
+  endif
+  if exists('*getbufinfo')
+    let info = getbufinfo(a:bufnr)
+    if empty(info)
+      return 0
+    endif
+    return info[0]['linecount']
   endif
   if exists('*getbufline')
     let lines = getbufline(a:bufnr, 1, '$')
@@ -72,14 +80,20 @@ function! s:funcs.list_wins() abort
   return map(getwininfo(), 'v:val["winid"]')
 endfunction
 
+function s:inspect_type(v) abort
+  let types = ['Number', 'String', 'Funcref', 'List', 'Dictionary', 'Float', 'Boolean', 'Null']
+  return get(types, type(a:v), 'Unknown')
+endfunction
+
 function! s:funcs.call_atomic(calls)
   let res = []
-  for [key, arglist] in a:calls
+  for i in range(len(a:calls))
+    let [key, arglist] = a:calls[i]
     let name = key[5:]
     try
       call add(res, call(s:funcs[name], arglist))
     catch /.*/
-      return [res, v:exception]
+      return [res, [i, "VimException(".s:inspect_type(v:exception).")", v:exception]]
     endtry
   endfor
   return [res, v:null]
@@ -108,6 +122,12 @@ function! s:funcs.command(command) abort
     call timer_start(0, {-> s:execute(a:command)})
   else
     execute a:command
+    let err = get(g:, 'errmsg', '')
+    " get error from python script run.
+    if !empty(err)
+      unlet g:errmsg
+      throw err
+    endif
   endif
 endfunction
 
@@ -186,14 +206,18 @@ endfunction
 
 function! s:funcs.out_write(str)
   echon a:str
+  call timer_start(0, {-> s:execute('redraw')})
 endfunction
 
 function! s:funcs.err_write(str)
-  echoerr a:str
+  "echoerr a:str
 endfunction
 
 function! s:funcs.err_writeln(str)
-  echoerr a:str
+  echohl ErrorMsg
+  echom a:str
+  echohl None
+  call timer_start(0, {-> s:execute('redraw')})
 endfunction
 
 function! s:funcs.create_namespace(name) abort
@@ -274,7 +298,6 @@ function! s:funcs.buf_add_highlight(bufnr, srcId, hlGroup, line, colStart, colEn
   catch /^Vim\%((\a\+)\)\=:E967/
     " ignore 967
   endtry
-  let g:i = srcId
   if a:srcId == 0
     " return generated srcId
     return srcId
@@ -374,7 +397,7 @@ function! s:funcs.buf_set_lines(bufnr, start, end, strict, ...) abort
       if delCount
         let start = startLnum + len(replacement)
         "8.1.0039
-        call deletebufline(a:bufnr, start, start + delCount - 1)
+        silent call deletebufline(a:bufnr, start, start + delCount - 1)
       endif
     endif
   endif
@@ -400,7 +423,7 @@ function! s:funcs.buf_set_var(bufnr, name, val)
 endfunction
 
 function! s:funcs.buf_del_var(bufnr, name)
-  call setbufvar(a:bufnr, a:name, v:null)
+  call coc#compat#buf_del_var(a:bufnr, a:name)
 endfunction
 
 function! s:funcs.buf_get_option(bufnr, name)
@@ -457,26 +480,40 @@ else
   endfunction
 endif
 
+function! s:get_tabnr(winid) abort
+  let ref = {}
+  call s:win_execute(a:winid, 'tabpagenr()', ref)
+  return get(ref, 'out', 0)
+endfunction
+
 function! s:funcs.win_get_cursor(win_id) abort
   let ref = {}
   call s:win_execute(a:win_id, "[line('.'), col('.')-1]", ref)
-  return ref['out']
+  return get(ref, 'out', 0)
 endfunction
 
 function! s:funcs.win_get_var(win_id, name) abort
-  return gettabwinvar(0, a:win_id, a:name)
+  let tabnr = s:get_tabnr(a:win_id)
+  if tabnr
+    return gettabwinvar(tabnr, a:win_id, a:name)
+  endif
+  throw 'window '.a:win_id. ' not a valid window'
 endfunction
 
 function! s:funcs.win_set_width(win_id, width) abort
-  return s:win_execute(a:win_id, 'vertical resize '.a:width)
+  call s:win_execute(a:win_id, 'vertical resize '.a:width)
 endfunction
 
 function! s:funcs.win_set_buf(win_id, buf_id) abort
-  return s:win_execute(a:win_id, 'buffer '.a:buf_id)
+  call s:win_execute(a:win_id, 'buffer '.a:buf_id)
 endfunction
 
 function! s:funcs.win_get_option(win_id, name) abort
-  return gettabwinvar(0, a:win_id, '&'.a:name)
+  let tabnr = s:get_tabnr(a:win_id)
+  if tabnr
+    return gettabwinvar(tabnr, a:win_id, '&'.a:name)
+  endif
+  throw 'window '.a:win_id. ' not a valid window'
 endfunction
 
 function! s:funcs.win_set_height(win_id, height) abort
@@ -490,20 +527,30 @@ function! s:funcs.win_set_option(win_id, name, value) abort
   elseif val is v:false
     let val = 0
   endif
-  call setwinvar(a:win_id, '&'.a:name, val)
+  let tabnr = s:get_tabnr(a:win_id)
+  if tabnr
+    call settabwinvar(tabnr, a:win_id, '&'.a:name, val)
+  else
+    throw 'window '.a:win_id. ' not a valid window'
+  endif
 endfunction
 
 function! s:funcs.win_set_var(win_id, name, value) abort
-  call setwinvar(a:win_id, a:name, a:value)
+  let tabnr = s:get_tabnr(a:win_id)
+  if tabnr
+    call settabwinvar(tabnr, a:win_id, a:name, a:value)
+  else
+    throw 'window '.a:win_id. ' not a valid window'
+  endif
 endfunction
 
 function! s:funcs.win_del_var(win_id, name) abort
-  call settabwinvar(0, a:win_id, a:name, v:null)
+  call s:win_execute(a:win_id, 'unlet! w:'.a:name)
 endfunction
 
 function! s:funcs.win_is_valid(win_id) abort
   let info = getwininfo(a:win_id)
-  return !empty(info)
+  return empty(info) ? v:false : v:true
 endfunction
 
 function! s:funcs.win_get_number(win_id) abort
@@ -520,15 +567,16 @@ function! s:funcs.win_set_cursor(win_id, pos) abort
 endfunction
 
 function! s:funcs.win_close(win_id, ...) abort
-  call s:win_execute(a:win_id, 'close!')
+  let force = get(a:, 1, 0)
+  call s:win_execute(a:win_id, 'close'.(force ? '!' : ''))
 endfunction
 
 function! s:funcs.win_get_tabpage(win_id) abort
-  let info = getwininfo(a:win_id)
-  if !info
+  let tabnr = s:get_tabnr(a:win_id)
+  if !tabnr
     throw 'Invalid window id '.a:win_id
   endif
-  return info[0]['tabnr']
+  return tabnr
 endfunction
 " }}
 

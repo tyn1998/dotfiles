@@ -1,3 +1,4 @@
+scriptencoding utf-8
 let g:coc#_context = {'start': 0, 'preselect': -1,'candidates': []}
 let g:coc_user_config = get(g:, 'coc_user_config', {})
 let g:coc_global_extensions = get(g:, 'coc_global_extensions', [])
@@ -35,14 +36,7 @@ function! coc#refresh() abort
 endfunction
 
 function! coc#on_enter()
-  if !coc#rpc#ready()
-    return ''
-  endif
-  if s:is_vim
-    call coc#rpc#notify('CocAutocmd', ['Enter', bufnr('%')])
-  else
-    call coc#rpc#request('CocAutocmd', ['Enter', bufnr('%')])
-  endif
+  call coc#rpc#notify('CocAutocmd', ['Enter', bufnr('%')])
   return ''
 endfunction
 
@@ -56,11 +50,14 @@ endfunction
 function! coc#_complete() abort
   let items = get(g:coc#_context, 'candidates', [])
   let preselect = get(g:coc#_context, 'preselect', -1)
-  call complete(
-        \ g:coc#_context.start + 1,
-        \ items)
+  let startcol = g:coc#_context.start + 1
   if s:select_api && len(items) && preselect != -1
+    noa call complete(startcol, items)
     call nvim_select_popupmenu_item(preselect, v:false, v:false, {})
+    " use <cmd> specific key to preselect item at once
+    call feedkeys("\<Cmd>\<CR>" , 'i')
+  else
+    call complete(startcol, items)
   endif
   return ''
 endfunction
@@ -123,10 +120,10 @@ endfunction
 function! coc#status()
   let info = get(b:, 'coc_diagnostic_info', {})
   let msgs = []
-  if get(info, 'error', 0)
+  if !empty(info) && get(info, 'error', 0)
     call add(msgs, s:error_sign . info['error'])
   endif
-  if get(info, 'warning', 0)
+  if !empty(info) && get(info, 'warning', 0)
     call add(msgs, s:warning_sign . info['warning'])
   endif
   return s:trim(join(msgs, ' ') . ' ' . get(g:, 'coc_status', ''))

@@ -334,3 +334,10 @@ nnoremap <silent><nowait> <space>m  :<C-u>CocList --normal marketplace<cr>
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-maximizer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:maximizer_default_mapping_key = '<leader>m'
+

@@ -192,7 +192,7 @@ endfun
 let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp',
             \'coc-pyright', 'coc-tsserver', 'coc-snippets',
             \'coc-json', 'coc-yank', 'coc-html', 'coc-css',
-            \'coc-prettier', 'coc-marketplace']
+            \'coc-prettier', 'coc-marketplace', 'coc-vimtex']
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

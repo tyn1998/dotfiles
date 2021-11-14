@@ -1,0 +1,44 @@
+{
+  "configurations": {
+    "CodeLLDB": {
+      "adapter": "CodeLLDB",
+      "variables": {
+        "BUILDME": {
+          "shell": "g++ -o ${workspaceRoot}/test -g -std=c++17 ${workspaceRoot}/test_c.cpp"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/test",
+        "stopAtEntry": true
+      }
+    },
+    "lldb-vscode": {
+      "adapter": "lldb-vscode",
+      "variables": {
+        "BUILDME": {
+          "shell": "g++ -o ${workspaceRoot}/test -g -std=c++17 ${workspaceRoot}/test_c.cpp"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/test",
+        "stopAtEntry": true
+      }
+    },
+    "cpptools": {
+      "adapter": "vscode-cpptools",
+      "variables": {
+        "BUILDME": {
+          "shell": "g++ -o ${workspaceRoot}/test -g -std=c++17 ${workspaceRoot}/test_c.cpp"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/test",
+        "stopOnEntry": true,
+        "MIMode": "lldb"
+      }
+    }
+  }
+}

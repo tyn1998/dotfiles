@@ -79,7 +79,7 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled = 1
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
+nnoremap <leader>D :GitGutterToggle<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-airline
@@ -341,3 +341,55 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:maximizer_default_mapping_key = '<leader>m'
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimspector
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+func! s:CustomiseUI()
+  call win_gotoid( g:vimspector_session_windows.code )
+  set norelativenumber
+  nunmenu WinBar
+  call win_gotoid( g:vimspector_session_windows.variables )
+  nunmenu WinBar
+  call win_gotoid( g:vimspector_session_windows.watches )
+  nunmenu WinBar
+  call win_gotoid( g:vimspector_session_windows.stack_trace )
+  nunmenu WinBar
+  call win_gotoid( g:vimspector_session_windows.output )
+  set norelativenumber
+  nunmenu WinBar
+endfunction
+
+augroup MyVimspectorUICustomistaion
+  autocmd!
+  autocmd User VimspectorUICreated call s:CustomiseUI()
+augroup END
+
+fun! GotoWindow(id)
+    call win_gotoid(a:id)
+endfun
+
+" Debugger remaps
+nnoremap <leader>dd :call vimspector#Launch()<CR>
+nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
+nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.terminal)<CR>
+nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
+nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
+nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
+nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
+nnoremap <leader>de :call vimspector#Reset()<CR>
+
+nnoremap <leader>dtcb :call vimspector#ClearLineBreakpoint()<CR>
+
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+nmap <leader>dk <Plug>VimspectorStepOut
+nmap <leader>d_ <Plug>VimspectorRestart
+nnoremap <leader>d<space> :call vimspector#Continue()<CR>
+
+nmap <leader>drc <Plug>VimspectorRunToCursor
+nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+
+nmap <Leader>di <Plug>VimspectorBalloonEval
+xmap <Leader>di <Plug>VimspectorBalloonEval

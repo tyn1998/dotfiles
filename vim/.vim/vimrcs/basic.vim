@@ -1,13 +1,3 @@
-""""""""""""""""""""""""""""""
-" => Load pathogen paths
-""""""""""""""""""""""""""""""
-let s:vim_runtime = expand('<sfile>:p:h')."/.."
-call pathogen#infect(s:vim_runtime.'/plugins/amix_plugins/{}')
-call pathogen#infect(s:vim_runtime.'/plugins/my_plugins/{}')
-call pathogen#infect(s:vim_runtime.'/colors/{}')
-call pathogen#helptags()
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

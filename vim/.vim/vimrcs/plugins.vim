@@ -84,6 +84,7 @@ nnoremap <leader>D :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_theme = 'base16_gruvbox_light_hard'
 let g:airline#extensions#tabline#enabled = 1 " 开启enhanced tabline
 let g:airline#extensions#tabline#show_buffers = 0 " 关闭把buffer当tab用（当只有一个tab时）
 let g:airline#extensions#tabline#show_splits = 0 " 不显示tabline右边当前tab的splits

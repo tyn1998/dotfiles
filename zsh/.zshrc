@@ -91,6 +91,14 @@ if [ -f /etc/profile ]; then
 fi
 
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+
+# 使终端也能走系统代理
+# 8889是代理软件里设置的端口
+export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087
+
+# 快捷地取消代理  
+alias noproxy="unset https_proxy http_proxy"
+
 export EDITOR=vim
 
 # export MANPATH="/usr/local/man:$MANPATH"

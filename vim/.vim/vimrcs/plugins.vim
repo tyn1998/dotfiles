@@ -158,7 +158,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add homebrew fzf to the vim path:
 if has("mac")
-    set rtp+=/usr/local/opt/fzf
+    set rtp+=/opt/homebrew/opt/fzf
 endif
 
 " [Buffers] 如果可能跳到已存在窗口
@@ -394,3 +394,9 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimtex
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let g:vimtex_view_method = 'zathura'

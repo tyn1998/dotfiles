@@ -82,6 +82,15 @@ plugins=(git zsh-autosuggestions autojump zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# 解决了tmux以login模式source了/etc/profile时
+# 调用path_helper导致PATH顺序不符合预期的情况
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export EDITOR=vim
 
 # export MANPATH="/usr/local/man:$MANPATH"

@@ -92,6 +92,9 @@ fi
 
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 
+# 默认的fzf命令参数，解决fzf颜色显示问题
+export FZF_DEFAULT_OPTS="--color=light,bg+:-1"
+
 # 使终端也能走系统代理
 # 8889是代理软件里设置的端口
 export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087

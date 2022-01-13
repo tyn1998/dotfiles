@@ -193,7 +193,7 @@ endfun
 let g:coc_global_extensions = ['coc-clangd', 'coc-vimlsp',
             \'coc-pyright', 'coc-tsserver', 'coc-snippets',
             \'coc-json', 'coc-yank', 'coc-html', 'coc-css',
-            \'coc-prettier', 'coc-marketplace', 'coc-vimtex']
+            \'coc-prettier', 'coc-marketplace']
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -394,9 +394,3 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimtex
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:vimtex_view_method = 'zathura'

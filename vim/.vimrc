@@ -35,7 +35,6 @@ Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ianva/vim-youdao-translater'
 Plug 'puremourning/vimspector'
-Plug 'lervag/vimtex'
 Plug 'preservim/vimux'
 
 call plug#end()

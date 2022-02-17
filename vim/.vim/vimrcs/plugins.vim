@@ -86,12 +86,10 @@ nnoremap <leader>D :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'base16_gruvbox_light_hard'
 let g:airline#extensions#tabline#enabled = 1 " 开启enhanced tabline
-let g:airline#extensions#tabline#show_buffers = 0 " 关闭把buffer当tab用（当只有一个tab时）
-let g:airline#extensions#tabline#show_splits = 0 " 不显示tabline右边当前tab的splits
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab前显示序号，不显示splits数
-let g:airline#extensions#tabline#show_tab_type = 0 " 不显示tab/buffer标记
 let g:airline#extensions#tabline#show_close_button = 0 " 不显示tabline右边的叉叉
-let g:airline#extensions#tabline#fnamemod = ':t' " 不显示文件路径
+let g:airline#extensions#tabline#fnamemod = ':t' " 只显示文件路径的tail
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " 同tail的buffers名带上parent路径
+" let g:airline_powerline_fonts = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

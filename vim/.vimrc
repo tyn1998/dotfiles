@@ -36,6 +36,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ianva/vim-youdao-translater'
 Plug 'puremourning/vimspector'
 Plug 'preservim/vimux'
+Plug 'terryma/vim-expand-region'
 
 call plug#end()
 

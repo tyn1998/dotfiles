@@ -23,6 +23,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asyncrun.extra'
 Plug 'skywind3000/asynctasks.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

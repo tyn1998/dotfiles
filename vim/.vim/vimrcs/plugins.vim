@@ -154,11 +154,6 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Add homebrew fzf to the vim path:
-if has("mac")
-    set rtp+=/opt/homebrew/opt/fzf
-endif
-
 " [Buffers] 如果可能跳到已存在窗口
 let g:fzf_buffers_jump = 1
 

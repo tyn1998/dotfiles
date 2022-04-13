@@ -38,6 +38,7 @@ Plug 'ianva/vim-youdao-translater'
 Plug 'puremourning/vimspector'
 Plug 'preservim/vimux'
 Plug 'terryma/vim-expand-region'
+Plug 'tyn1998/vim-lilypond'
 
 call plug#end()
 

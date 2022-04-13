@@ -2,6 +2,7 @@
     link:
       create: true
       relink: true
+      force: true
 
 - clean: ['~']
 
@@ -12,9 +13,8 @@
     ~/.vimrc: vim/.vimrc
     ~/.tmux: tmux/.tmux
     ~/.tmux.conf: tmux/.tmux.conf
-    ~/.config/ranger:
-      force: true
-      path: ranger
+    ~/.config/ranger: ranger
+    ~/.config/zathura: zathura
     # ~/.config/fish:
     #   force: true
     #   path: fish

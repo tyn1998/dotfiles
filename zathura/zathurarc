@@ -1,0 +1,45 @@
+# place in ~/.config/zathura/
+# Zathura configuration file
+# See man `man zathurarc'
+#-----------------------------
+
+# enable clipboard
+set selection-clipboard clipboard
+
+# See man `man zathurarc'
+map r reload
+map p print
+map i recolor
+map R rotate
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+# Open document in fit-width mode by default
+set window-height 1000
+# set window-width 1000
+set adjust-open "best-fit"
+
+# window-title
+set window-title-basename "true"
+set window-title-page "true"
+
+set scroll-wrap "true"
+set continuous-hist-save "true"
+# set zoom-center "true"
+# set vertical-center "true"
+
+# One page per row by default
+set pages-per-row 1
+
+# stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+# zoom settings
+set zoom-min 10
+set guioptions ""
+
+# fontsize
+set font "FiraCode 14"

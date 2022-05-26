@@ -20,8 +20,4 @@ Here is a list:
 
 ## Screenshots
 
-<img src="./screenshots/dotfiles-0.png" style="zoom:75%;" />
-
-<img src="./screenshots/dotfiles-1.png" style="zoom:75%;" />
-
-<img src="./screenshots/dotfiles-2.png" style="zoom:75%;" />
+<img src="./screenshots/tIDE.jpeg" style="zoom:75%;" />

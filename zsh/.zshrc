@@ -96,10 +96,10 @@ export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export FZF_DEFAULT_OPTS="--color=light,bg+:-1"
 
 # 使终端也能走系统代理
-# 1087是代理软件里设置的端口
-export https_proxy=http://127.0.0.1:1087 http_proxy=http://127.0.0.1:1087
+# 7890是代理软件里设置的端口
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
-# 快捷地取消代理  
+# 快捷地取消代理 
 alias noproxy="unset https_proxy http_proxy"
 
 export EDITOR=vim

@@ -85,6 +85,7 @@ nnoremap <leader>D :GitGutterToggle<cr>
 " => vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_theme = 'base16_gruvbox_light_hard'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1 " 开启enhanced tabline
 let g:airline#extensions#tabline#show_close_button = 0 " 不显示tabline右边的叉叉
 let g:airline#extensions#tabline#fnamemod = ':t' " 只显示文件路径的tail

@@ -168,7 +168,6 @@ nnoremap <C-f> :call FzfOmniFiles()<CR>
 nnoremap <C-g> :Ag<CR>
 " 在tmux中触发<C-b>需要按<C-b>b
 nnoremap <C-b> :Buffers<CR> 
-nnoremap <C-t> :Tags<CR>
 
 fun! FzfOmniFiles()
   let is_git = system('git status')
@@ -401,3 +400,13 @@ xmap <Leader>di <Plug>VimspectorBalloonEval
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <CR> <Plug>(expand_region_expand)
 map <BS> <Plug>(expand_region_shrink)
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vista.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'coc'
+
+nnoremap <C-t> :Vista!!<CR>

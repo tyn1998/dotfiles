@@ -178,6 +178,8 @@ fun! FzfOmniFiles()
   endif
 endfun
 
+let $FZF_PREVIEW_COMMAND="bat --style=numbers --theme=gruvbox-dark --color=always {}"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc.vim

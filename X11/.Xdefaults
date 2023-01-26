@@ -1,0 +1,48 @@
+!-*- Perl extensions -*-
+URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,font-size
+URxvt.url-launcher:   /usr/bin/google-chrome-stable
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1
+URxvt.keysym.Control-Shift-V:     perl:pasta:paste
+! Comment this if you don't want copy when text is selected
+URxvt.clipboard.autocopy: true
+! Changing font size on the fly
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+URxvt.scrollBar: false
+
+URxvt.font: xft:MesloLGS NF-12
+
+! Colors
+URxvt.cursorColor: #ffaf00
+*background: #282727
+*foreground: #ebdab1
+! black
+*color0: #282727
+*color8: #928273
+! red
+*color1: #cb231d
+*color9: #fa4834
+! green
+*color2: #98961a
+*color10: #b8ba26
+! yellow
+*color3: #d69821
+*color11: #f9bc2f
+! blue
+*color4: #458487
+*color12: #83a497
+! magenta
+*color5: #b06185
+*color13: #d2859a
+! cyan
+*color6: #689c69
+*color14: #8ebf7b
+! white
+*color7: #a89883
+*color15: #ebdab1

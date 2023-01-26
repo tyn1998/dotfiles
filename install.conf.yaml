@@ -15,6 +15,9 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.config/ranger: ranger
     ~/.config/zathura: zathura
-    # ~/.config/fish:
-    #   force: true
-    #   path: fish
+    ~/.config/i3: i3
+    ~/.urxvt: urxvt
+    ~/.Xdefaults: X11/.Xdefaults
+    ~/.Xresources: X11/.Xresources
+    ~/.xinitrc: X11/.xinitrc
+    ~/.Xmodmap: X11/.Xmodmap

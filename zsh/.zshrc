@@ -104,10 +104,6 @@ alias noproxy="unset https_proxy http_proxy all_proxy"
 
 export EDITOR=vim
 
-# MacOS pyenv
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
 # chruby
 source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
 source $(brew --prefix)/opt/chruby/share/chruby/auto.sh

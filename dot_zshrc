@@ -1,0 +1,39 @@
+# 1. fnm 初始化（必须在 instant prompt 之前）
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# 2. instant prompt（必须紧跟其后）
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
+
+# ✅ 主题必须在 source 之前设置
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+# ✅ 禁用自动更新
+zstyle ':omz:update' mode disabled
+
+source $ZSH/oh-my-zsh.sh
+
+# homebrew 镜像
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+# JAVA_HOME
+export JAVA_HOME=$(brew --prefix openjdk)
+export PATH=$JAVA_HOME/bin:$PATH
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# 编译相关
+export CXXFLAGS="--std=c++17"
+
+# 代理（按需取消注释）
+# export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+alias noproxy="unset https_proxy http_proxy all_proxy"
+
+# p10k 配置
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

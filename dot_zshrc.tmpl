@@ -6,6 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# shell默认编辑器为 neovim
+export EDITOR='nvim'
+export VISUAL='nvim'
+
 export ZSH="$HOME/.oh-my-zsh"
 
 # ✅ 主题必须在 source 之前设置

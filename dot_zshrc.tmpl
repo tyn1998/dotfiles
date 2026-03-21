@@ -31,9 +31,11 @@ export PATH="$HOME/.local/bin:$PATH"
 # 编译相关
 export CXXFLAGS="--std=c++17"
 
-# 代理（按需取消注释）
-# export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+# 代理（chezmoi条件应用）
+{{- if not .work }}
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 alias noproxy="unset https_proxy http_proxy all_proxy"
+{{- end }}
 
 # p10k 配置
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

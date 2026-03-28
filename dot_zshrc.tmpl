@@ -36,10 +36,13 @@ export PATH="$HOME/.local/bin:$PATH"
 export CXXFLAGS="--std=c++17"
 
 # 代理（chezmoi条件应用）
-{{- if not .work }}
+{{- if .work }}
+alias proxy="export https_proxy=socks5h://127.0.0.1:13659 http_proxy=socks5h://127.0.0.1:13659 all_proxy=socks5h://127.0.0.1:13659"
+{{- else }}
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-alias noproxy="unset https_proxy http_proxy all_proxy"
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 {{- end }}
+alias noproxy="unset https_proxy http_proxy all_proxy"
 
 # p10k 配置
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

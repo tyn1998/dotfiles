@@ -1,2 +1,8 @@
 [mgr]
 show_hidden = true
+
+[opener]
+edit = [
+  { run = '$EDITOR "$@"', desc = "$EDITOR", block = true },
+  { run = 'zed "$@"', desc = "Zed", block = false },
+]

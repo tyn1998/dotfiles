@@ -37,6 +37,7 @@ export CXXFLAGS="--std=c++17"
 
 # 代理（chezmoi条件应用）
 {{- if .work }}
+export PATH="$HOME/.utoo-proxy:$PATH"
 alias proxy="export https_proxy=socks5h://127.0.0.1:13659 http_proxy=socks5h://127.0.0.1:13659 all_proxy=socks5h://127.0.0.1:13659"
 {{- else }}
 export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
@@ -57,3 +58,6 @@ export FZF_DEFAULT_OPTS_FILE=~/.config/fzf/fzf.conf
 
 # lazygit
 alias lazygit='lazygit --use-config-file="$HOME/.config/lazygit/config.yml"'
+
+# OpenClaw Completion
+source "$HOME/.openclaw/completions/openclaw.zsh"

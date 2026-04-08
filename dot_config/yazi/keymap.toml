@@ -6,6 +6,6 @@ desc = "Open $SHELL here"
 
 [[mgr.prepend_keymap]]
 on = ["<C-f>"]
-run = '''shell 'rg --color=always --line-number --no-heading --smart-case "" | fzf --ansi --delimiter : --preview "bat --color=always {1} --highlight-line {2}" --preview-window "right:60%:+{2}-/2" --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" | cut -d: -f1 | pbcopy' --block'''
+run = '''shell 'rg --color=always --line-number --no-heading --smart-case "" | fzf --ansi --delimiter : --preview "bat --color=always {1} --highlight-line {2}" --preview-window "right:60%:+{2}-/2" --bind "change:reload:rg --color=always --line-number --no-heading --smart-case {q} || true" | cut -d: -f1 | perl -pe 'chomp' | pbcopy' --block'''
 desc = "Grep content in files"
 
